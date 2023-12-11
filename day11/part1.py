@@ -4,7 +4,6 @@ r = 0
 while r < len(txt):
     if '#' not in txt[r]:
         txt = txt[:r] + [('.' * len(txt[0]))] + txt[r:]
-        print('sus')
         r += 1
     r += 1
 
