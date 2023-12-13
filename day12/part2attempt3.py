@@ -1,6 +1,11 @@
 txt = [i.strip() for i in open('day12/input.txt').readlines()]
 
+sumsToDict = {}
 def sumsTo(num, terms):
+    global sumsToDict
+    if (num, terms) in sumsToDict:
+        return sumsToDict[(num, terms)]
+    
     if num == 0:
         return [[0] * terms]
     if terms == 0:
@@ -13,20 +18,25 @@ def sumsTo(num, terms):
                 new = s[:j] + [i] + s[j:]
 
                 # for debug
-                if terms == 1:
-                    print(new, s)
+                # if terms == 1:
+                #     print(new, s)
 
                 if new not in ret:
                     ret.append(new)
+    sumsToDict[(num, terms)] = ret
     return ret
 
 _sum = 0
-for l in txt:
+for li in range(len(txt)):
+    print(li)
+    l = txt[li]
     ways = 0
 
     syms, nums = l.split()
-    length = len(syms)
+    syms = syms + '?' + syms + '?' + syms + '?' + syms + '?' + syms
+    nums = nums + ',' + nums + ',' + nums + ',' + nums + ',' + nums
     nums = [int(thing) for thing in nums.split(',')]
+    length = len(syms)
     numbernums = len(nums)
     working = length - sum(nums)
     
@@ -37,7 +47,7 @@ for l in txt:
     base = [0] + ([1] * (numbernums - 1)) + [0]
 
 
-    print(base, numToDistribute)
+    # print(base, numToDistribute)
 
     for s in sumsTo(numToDistribute, numbernums + 1):
         list = [base[i] + s[i] for i in range(len(base))]
