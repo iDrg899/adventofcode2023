@@ -1,67 +1,89 @@
-txt = [i.strip() for i in open('day14/input.txt').readlines()]
+txt = [i.strip() for i in open('day16/input.txt').readlines()]
 
-length = len(txt)
-balls = []
-walls = []
+height = len(txt)
+width = len(txt[0])
 
-for li in range(length):
-    for i in range(length):
-        if txt[li][i] == 'O':
-            balls.append((li, i))
-        if txt[li][i] == '#':
-            walls.append((li, i))
+beams = []
+oldActive = []
+active = []
 
-# balls.sort(key = lambda x: x[1])
+def tryAdd(b):
+    # Add if new and within the rectangle
+    global active
+    global beams
 
-ballsList = []
+    y, x = b[0], b[1]
 
-doneish = False
-i = 0
-while i < 1000000000:
-    # North:
-    balls.sort()
-    for bi in range(len(balls)):
-        b = balls[bi]
-        if b[0] == 0:
-            continue
-        while (b[0] - 1, b[1]) not in walls and (b[0] - 1, b[1]) not in balls and b[0] > 0:
-            b = balls[bi] = (b[0] - 1, b[1])
+    if b in active or b in beams:
+        return
+    if y < 0 or y > height - 1:
+        return
+    if x < 0 or x > width - 1:
+        return
+    active.append(b)
 
-    # West:
-    balls.sort(key = lambda x: x[1])
-    for bi in range(len(balls)):
-        b = balls[bi]
-        if b[1] == 0:
-            continue
-        while (b[0], b[1] - 1) not in walls and (b[0], b[1] - 1) not in balls and b[1] > 0:
-            b = balls[bi] = (b[0], b[1] - 1)
+def simulateFrom(origin):
+    global beams
+    global oldActive
+    global active
 
-    # South:
-    balls.sort(key = lambda x: -x[0])
-    for bi in range(len(balls)):
-        b = balls[bi]
-        if b[0] == length - 1:
-            continue
-        while (b[0] + 1, b[1]) not in walls and (b[0] + 1, b[1]) not in balls and b[0] < length - 1:
-            b = balls[bi] = (b[0] + 1, b[1])
+    beams = [origin]
+    oldActive = [origin]
+    active = []
 
-    # East:
-    balls.sort(key = lambda x: -x[1])
-    for bi in range(len(balls)):
-        b = balls[bi]
-        if b[1] == length - 1:
-            continue
-        while (b[0], b[1] + 1) not in walls and (b[0], b[1] + 1) not in balls and b[1] < length - 1:
-            b = balls[bi] = (b[0], b[1] + 1)
+    done = False
+    while not done:
+        for b in oldActive:
 
-    if balls in ballsList and doneish == False:
-        doneish = True
-        print('repeat at', i)
-        # print('at', ballsList.index(balls))
-        i += (i - ballsList.index(balls)) * ((1000000000 - i) // (i - ballsList.index(balls)))
-    ballsList.append([i for i in balls])
+            y, x, yvel, xvel = b[0], b[1], b[2], b[3]
 
-    print(i)
+            char = txt[y][x]
 
-    i += 1
-print(sum([length - b[0] for b in balls]))
+            if char == '.':
+                tryAdd((y + yvel, x + xvel, yvel, xvel))
+            elif char == '/':
+                tryAdd((y - xvel, x - yvel, -xvel, -yvel))
+            elif char == '\\':
+                tryAdd((y + xvel, x + yvel, xvel, yvel))
+            elif char == '-':
+                if yvel == 0:
+                    tryAdd((y + yvel, x + xvel, yvel, xvel))
+                else:
+                    tryAdd((y, x - 1, 0, -1))
+                    tryAdd((y, x + 1, 0, 1))
+            elif char == '|':
+                if xvel == 0:
+                    tryAdd((y + yvel, x + xvel, yvel, xvel))
+                else:
+                    tryAdd((y - 1, x, -1, 0))
+                    tryAdd((y + 1, x, 1, 0))
+            
+        if len(active) == 0:
+            done = True
+
+        oldActive = active
+        active = []
+        beams += oldActive
+
+
+    dumbList = []
+    for b in beams:
+        if (b[0], b[1]) not in dumbList:
+            dumbList.append((b[0], b[1]))
+
+    return len(dumbList)
+
+
+things = []
+for i in range(height):
+    things.append(simulateFrom((i, 0, 0, 1)))
+    things.append(simulateFrom((i, width - 1, 0, -1)))
+    if i % 10 == 0:
+        print(i, max(things))
+for i in range(width):
+    things.append(simulateFrom((0, i, 1, 0)))
+    things.append(simulateFrom((height - 1, i, -1, 0)))
+    if i % 10 == 0:
+        print(i, max(things))
+
+print(max(things))
