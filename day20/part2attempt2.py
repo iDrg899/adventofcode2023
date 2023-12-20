@@ -1,9 +1,16 @@
+# bro there is a lot of failed code here that i didnt end up using or became messy so just ignore it
+
+import math
+
 txt = [i.strip() for i in open('day20/input.txt').readlines()]
 
 destsOf = {}
 typeOf = {}
 stateOf = {}
 memoryOf = {}
+
+flipperList = []
+conjList = []
 
 for l in txt:
     node, dests = l.split(' -> ')
@@ -13,8 +20,10 @@ for l in txt:
 
     if type == '%':
         stateOf[name] = 0              # 0 is off, 1 is on
+        flipperList.append(name)
     if type == '&':
         memoryOf[name] = {}
+        conjList.append(name)
 
 for n in destsOf:
     for d in destsOf[n]:
@@ -23,7 +32,7 @@ for n in destsOf:
         if typeOf[d] == '&':
             memoryOf[d][n] = 0
 
-
+mgOnesPositionLists = [[], [], [], []]
 
 def pushButton(param):
 
@@ -31,6 +40,8 @@ def pushButton(param):
     for d in destsOf['roadcaster']:
         signals.append(['roadcaster', 0, d])         # 0 is low, 1 is high
     
+    mgSent = False
+
     lastProcessed = -1
     while lastProcessed < len(signals) - 1:
         
@@ -39,6 +50,16 @@ def pushButton(param):
 
         if node == 'rx' and strength == 0:
             return True
+
+        if node == 'mg' and not mgSent:
+            row = ''.join([str(memoryOf['mg'][n]) for n in memoryOf['mg']])
+            if '1' in row:
+                print(row.replace('0', ' '), param)
+                mgSent = True
+                
+                mgOnesPositionLists[row.index('1')].append(param)
+            if row.count('1') > 1:
+                return
 
         if typeOf[node] == '%':
             if strength == 0:
@@ -62,17 +83,23 @@ def pushButton(param):
         
         lastProcessed += 1
     
+    # print(''.join(str(stateOf[n]) for n in flipperList).replace('0', ' '))
+
     # print(signals)
     return False
 
 done = False
-i = 0
-while not done:
-    if i % 1000 == 0:
-        print('Doing', i)
+for i in range(10000):
     if pushButton(i):
         print('THE ANSWER IS', i)
         done = True
-    i += 1
+    
+firsts = [l[0] for l in mgOnesPositionLists]
+diffs = [l[1] - l[0] for l in mgOnesPositionLists]
 
-# I cut it off at 16594000
+print(firsts)
+print(diffs)
+
+print(math.lcm(diffs[0], diffs[1], diffs[2], diffs[3]))
+
+# bro there is a lot of failed code here that i didnt end up using or became messy so just ignore it
