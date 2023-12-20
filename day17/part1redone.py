@@ -25,7 +25,7 @@ while len(crustables) > 0:
     dist = nodes[rowIdx][nodeIdx][dircIdx]
 
     if dircIdx == 0: # if previous move was vertical
-        for i in [-10, -9, -8, -7, -6, -5, -4, 4, 5, 6, 7, 8, 9, 10]:
+        for i in [-3, -2, -1, 1, 2, 3]:
             if 0 <= nodeIdx + i < size:
                 if i > 0:
                     addlDist = sum([int(txt[rowIdx][nodeIdx + j]) for j in range(1, i + 1)])
@@ -35,7 +35,7 @@ while len(crustables) > 0:
                     nodes[rowIdx][nodeIdx + i][1] = dist + addlDist
                     crustables.append((rowIdx, nodeIdx + i, 1))
     else:
-        for i in [-10, -9, -8, -7, -6, -5, -4, 4, 5, 6, 7, 8, 9, 10]:
+        for i in [-3, -2, -1, 1, 2, 3]:
             if 0 <= rowIdx + i < size:
                 if i > 0:
                     addlDist = sum([int(txt[rowIdx + j][nodeIdx]) for j in range(1, i + 1)])
