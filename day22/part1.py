@@ -1,0 +1,1 @@
+txt = [i.strip() for i in open('day22/input.txt').readlines()]
