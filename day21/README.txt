@@ -67,3 +67,8 @@ Here's what each one is:
                                 (go there if you want any hope of understanding my code)
     README.txt:             this file
     sample.txt:             the sample input
+
+----------------------------------------------------------------------------------------------------------------
+
+FINAL NOTE:
+I used the word "crustables" in my code a lot. I don't remember why.
