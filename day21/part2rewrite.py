@@ -2,6 +2,8 @@ txt = [i.strip() for i in open('day21/input.txt').readlines()]
 
 size = len(txt)
 
+UDLR = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+
 def step():
     global reachable, crustables, offReachable, offCrustables
     
@@ -28,6 +30,8 @@ def step():
     offCrustables = [i for i in crustables]
     crustables = [i for i in newCrustables]
 
+
+
 start = (0, 0)
 for lineIdx in range(len(txt)):
     line = txt[lineIdx]
@@ -40,36 +44,31 @@ crustables = [start]
 offReachable = []
 offCrustables = []
 
-UDLR = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
-# 65 good
-for i in range(327):
+
+for i in range(64):
     step()
+W = len(reachable)      # W is the answer after 64 steps
 
-print(len(reachable))
+step()
+B = len(reachable)      # B is the answer after 65 steps
 
-dists = [abs(65 - c[0]) + abs(65 - c[1]) for c in crustables]
-for d in dists:
-    if d != dists[0]:
-        print(d)
-    else:
-        print('.', end = '')
+totalGardens = sum([l.count('.') for l in txt]) + 1
+# The number of periods in the file, plus one for the 'S'
 
-print('\n')
+R = totalGardens - W - B
 
-# reachable = [(0, 0), (-1, 0), (0, -1), (-1, -1)]
-# crustables = [(0, 0), (-1, 0), (0, -1), (-1, -1)]
-# offReachable = []
-# offCrustables = []
 
-# for i in range(65):
-#     step()
 
-# print(len(reachable))
+steps = 26501365        # S
+layers = steps // 131   # L
 
-# dists = [abs(-0.5 - c[0]) + abs(-0.5 - c[1]) for c in crustables]
-# for d in dists:
-#     if d != dists[0]:
-#         print(d)
-#     else:
-#         print('.', end = '')
+sumW = W  *  layers**2
+sumB = B  *  (layers + 1)**2
+sumR = R  *  layers * (layers + 1)
+
+inexplicableError = 10 * (layers) * (layers + 1)
+
+answer = sumW + sumB + sumR - inexplicableError
+
+print('Part 2 answer:', answer)
