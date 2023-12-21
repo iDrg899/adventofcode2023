@@ -48,6 +48,16 @@ the incorrect answers I got differed from the correct ones by 10 × L(L + 1)
 
 I still have no idea where the error came from, but I assume it has to do with overlapping perimeters.
 
+    UPDATE: after browsing r/adventofcode, I learned that the source of error is the presence of trapped garden
+            plots:
+
+                 #
+                #.#
+                 #
+    
+    My input has ten of these, hence the 10 in the final formula.
+    I'm not entirely sure why each of these surfaces L(L + 1) times, but I no longer care.
+
 Anyway, the final formula was W × L² + B × (L + 1)² + R × L(L + 1) - 10 × L(L + 1).
 
 ----------------------------------------------------------------------------------------------------------------
@@ -67,6 +77,7 @@ Here's what each one is:
                                 (go there if you want any hope of understanding my code)
     README.txt:             this file
     sample.txt:             the sample input
+    walledGardenCounter.py: see the UPDATE a bit above ↑↑↑
 
 ----------------------------------------------------------------------------------------------------------------
 
