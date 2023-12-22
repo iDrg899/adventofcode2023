@@ -14,7 +14,7 @@ while txt[i] != '':
 
 
 def neg(s):
-    print(s)
+    # print(s)
     if '<' in s:
         a, b = s.split('<')
         return a + '>' + str(int(b) - 1)

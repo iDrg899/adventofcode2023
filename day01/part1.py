@@ -1,4 +1,4 @@
-f = open("input.txt")
+f = open("day01/input.txt")
 txt = [i.strip() for i in f.readlines()]
 
 s = 0

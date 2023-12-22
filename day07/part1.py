@@ -1,4 +1,4 @@
-txt = [i.strip() for i in open('day7/input.txt').readlines()]
+txt = [i.strip() for i in open('day07/input.txt').readlines()]
 
 CARDS = '23456789TJQKA'
 l = []

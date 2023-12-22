@@ -1,4 +1,4 @@
-txt = [i.strip() for i in open('day5/sample.txt').readlines()]
+txt = [i.strip() for i in open('day05/input.txt').readlines()]
 
 def transform(rnge, transformations):
     a, b = rnge[0], rnge[1]

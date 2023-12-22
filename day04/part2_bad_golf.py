@@ -2,7 +2,7 @@
 # Enjoy golf
 
 l = []
-for c in [i.strip()for i in open("input.txt").readlines()]:
+for c in [i.strip()for i in open("day04/input.txt").readlines()]:
  w,h=[i.strip().split()for i in c.split(':')[1].split('|')];score=sum([n in h for n in w]);l.append(score)
 q=[1]*len(l)
 for c in range(len(l)):

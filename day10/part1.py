@@ -61,13 +61,11 @@ while current != 'S':
             pos[1] += 1
             lastMove = 'R'
 
-    print(pos)    
-    print(current)
+    # print(pos)    
+    # print(current)
 
     count += 1
     
     current = txt[pos[0]][pos[1]]
 
-print(count/2)
-
-# 6844
+print(count//2)

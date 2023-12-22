@@ -5,7 +5,7 @@
 # Besides that, I don't want to think about anything else I did because it looks very messy.
 # Nothing here is intended to be neat. That goes for all of my solutions. I kinda speedrun.
 
-f = open("input.txt")
+f = open("day03/input.txt")
 txt = [i.strip() + '.' for i in f.readlines()]
 
 parts = []

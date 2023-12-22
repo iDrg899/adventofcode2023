@@ -2,7 +2,7 @@
 # On second thought, don't look at it at all
 # I almost rewrote the whole thing just so i could have something im proud of, but i cannot have pride in my life after creating this
 
-f = open("input.txt")
+f = open("day04/input.txt")
 txt = [i.strip() for i in f.readlines()]
 
 score = 0

@@ -1,4 +1,4 @@
-txt = [i.strip() for i in open('day9/input.txt').readlines()]
+txt = [i.strip() for i in open('day09/input.txt').readlines()]
 
 _sum = 0
 

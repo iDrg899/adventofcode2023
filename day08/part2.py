@@ -1,4 +1,4 @@
-txt = [i.strip() for i in open('day8/input.txt').readlines()]
+txt = [i.strip() for i in open('day08/input.txt').readlines()]
 
 directions = txt[0]
 

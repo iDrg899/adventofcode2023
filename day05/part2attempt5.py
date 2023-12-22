@@ -1,4 +1,4 @@
-txt = [i.strip() for i in open('day5/input.txt').readlines()]
+txt = [i.strip() for i in open('day05/input.txt').readlines()]
 
 nums = [int(i) for i in txt[0][7:].split()]
 

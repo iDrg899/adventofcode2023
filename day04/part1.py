@@ -1,4 +1,4 @@
-f = open("input.txt")
+f = open("day04/input.txt")
 txt = [i.strip() for i in f.readlines()]
 
 score = 0
