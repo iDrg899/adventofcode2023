@@ -1,0 +1,18 @@
+['pfl', 'lkn', 'ltb', 'fxf', 'hqv', 'kmb', 'fxl', 'gxv', 'tpn', 'fgf', 'gjx', 'drt', 'hpb']
+['pfl', 'lkn', 'ltb', 'fxf', 'hqv', 'kmb', 'fxl', 'gxv', 'tpn', 'mjj', 'ltv', 'kzv', 'mrv', 'nbn', 'kzc', 'npb']
+['pfl', 'tqs', 'npg', 'vhn', 'mvx', 'fxl', 'gxv', 'tpn', 'fgf', 'gjx', 'drt', 'hpb']
+['pfl', 'tqs', 'npg', 'vhn', 'mvx', 'fxl', 'gxv', 'tpn', 'mjj', 'ltv', 'kzv', 'mrv', 'nbn', 'kzc', 'npb']
+['pfl', 'vll', 'bgd', 'mqb', 'mvt', 'hqv', 'kmb', 'fxl', 'gxv', 'tpn', 'fgf', 'gjx', 'drt', 'hpb']
+['pfl', 'vll', 'bgd', 'mqb', 'mvt', 'hqv', 'kmb', 'fxl', 'gxv', 'tpn', 'mjj', 'ltv', 'kzv', 'mrv', 'nbn', 'kzc', 'npb']
+['pfl', 'vll', 'bgd', 'qxh', 'mvx', 'fxl', 'gxv', 'tpn', 'fgf', 'gjx', 'drt', 'hpb']
+['pfl', 'vll', 'bgd', 'qxh', 'mvx', 'fxl', 'gxv', 'tpn', 'mjj', 'ltv', 'kzv', 'mrv', 'nbn', 'kzc', 'npb']
+['pfl', 'vll', 'bgd', 'vnz', 'hqv', 'kmb', 'fxl', 'gxv', 'tpn', 'fgf', 'gjx', 'drt', 'hpb']
+['pfl', 'vll', 'bgd', 'vnz', 'hqv', 'kmb', 'fxl', 'gxv', 'tpn', 'mjj', 'ltv', 'kzv', 'mrv', 'nbn', 'kzc', 'npb']
+['pfl', 'vll', 'zkn', 'fvv', 'kmb', 'fxl', 'gxv', 'tpn', 'fgf', 'gjx', 'drt', 'hpb']
+['pfl', 'vll', 'zkn', 'fvv', 'kmb', 'fxl', 'gxv', 'tpn', 'mjj', 'ltv', 'kzv', 'mrv', 'nbn', 'kzc', 'npb']
+
+txl, hxq
+zcj, rtt
+fxl, gxv
+ ↑
+actually tpn
